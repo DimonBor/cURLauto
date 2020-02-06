@@ -17,18 +17,26 @@ chmod +777 ./cURLauto.sh
 exec 9<./proxies.txt
 #---------------------User input---------------------
 echo "Enter your request:"
-read User_Request
-
+read USER_REQUEST
+echo "Enter timeout:"
+read TIMEOUT
 #---------------------Doing requests---------------------
 
 while read <&9 LINE
 	do	
-		curl $User_Request --proxy $LINE
-	done  
+		RESPONSE=$(curl -LI $USER_REQUEST -o /dev/null -w '%{http_code}\n' -s --proxy $LINE --connect-timeout $TIMEOUT)	
+		if [ $RESPONSE -eq "200" ]; then
+			echo "RESPONSE OK"
+		fi
+		if [ $RESPONSE -ne "200" ]; then
+			echo "RESPONSE BAD"
+		fi
+	done
+
 #---------------------Ending script---------------------
 echo "Done!"
 echo "Do you want to continue?[y/n]:"
-read input
+read INPUT
 
-if [ $input = "y" ]; then ./cURLauto.sh
+if [ $INPUT = "y" ]; then ./cURLauto.sh
 fi
