@@ -1,4 +1,5 @@
 # cURLauto
+It's simple util to make curl requests automaticaly.
 Usage:
 "./cURLauto.sh" or "bash cURLauto.sh".
 
