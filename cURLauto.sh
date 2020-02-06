@@ -11,7 +11,7 @@ echo " \___|\___/\_| \_\_____/\__,_|\__,_|\__\___/ "
                                              
                                              
 echo "v1.0 Beta"
-echo "Develop: Dimon borshch"
+echo "Develop: DimonBor"
 chmod +777 ./cURLauto.sh
 #---------------------Execs---------------------
 exec 9<./proxies.txt
